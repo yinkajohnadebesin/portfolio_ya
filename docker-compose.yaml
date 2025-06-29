@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  server:
+    container_name: YP_backend
+    build: ./server
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+    networks:
+      - portfolio-net
+
+  client:
+    container_name: YP_frontend
+    build: ./client
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+    networks:
+      - portfolio-net
+
+networks:
+  portfolio-net:
+    driver: bridge
