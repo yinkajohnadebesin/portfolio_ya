@@ -6,8 +6,8 @@ services:
     build: ./server
     ports:
       - "4000:4000"
-    environment:
-      - PORT=4000
+    env_file:
+      - ./server/.env
     networks:
       - portfolio-net
 
